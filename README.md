@@ -48,19 +48,73 @@ My editor of choice is **VSCode** with plugins:
 
 
 The rust toolchain installation is very easy for Debian on WSL, just follow the instructions how to use **rustup** on [rust-lang.org](https://www.rust-lang.org/tools/install).
-**Github** is for now the place for my repositories. And **Git** on Debian is logically the version control system for my source code. 
-You probably found this file you read just now on [Github]().
+\
+For wasm compilation we need the tool [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
+\
+You probably found this file you read just now on [Github](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock).**Github** (Microsoft) is for now the place for my repositories. 
+\
+And **Git** on Debian is logically the version control system for my source code. 
+\
+Licence is a thing today and the easiest one is the MIT licence. It basically means it is completely free of everything: money, profit, responsibility, liability and anything. It is a tutorial for everybody. Just use it.
 
+## HTML, CSS
 
+Let start with a simple static HTML and even simpler CSS files. Just to see if the web server  works. I like to have a separate **web_server_folder** and then **web_content_folder**, because of my previous complex web apps. It is a wise choice.
+\ 
+The code inside my 'index.html' and 'rust_wasm_pwa_minimal_clock.css' will evolve. But nothing too extravagant to not understand. Mainly boring boilerplate copied from somewhere.
 
 ## Development
 
-We will need a web file server because security does not allow loading modules from local file.  
+We will need a **web file server** because browser security does not allow loading wasm modules from local file. 
+\
 Install this basic one:
 `cargo install basic-http-server`  
 Run the server in a separate terminal so it can stay running all the time:  
-Go to the content folder:  
-`cd rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/web_content_folder`  
+Go to the web content folder:  
+`cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/web_content_folder`  
+Run the server:  
 `basic-http-server`  
 Open the browser on:  
 `http://127.0.0.1:4000`  
+\
+Ok. It should work. Just a static html+css for now.
+
+## Rust wasm
+
+Cargo.toml is very important to define the output as wasm library and the required dependencies to web-sys, js-sys and wasm-bindgen.
+We need a src/lib.rs for our code. We start just with a simple wasm_bindgen_start function.
+Compile the code with:  
+`wasm-pack build --target web --release`
+With a little luck we now have a pkg folder with all the goodies.
+We must copy it to our web_content_folder. I like to use the rsync utility.
+`sudo apt-get install rsync`  
+`\rsync -a --delete-after pkg/ web_server_folder/web_content_folder/pkg/`  
+
+Just refresh the browser and watch the F12 developer tools.
+
+## PWA (progressive web app)
+
+It is easy to make a simple PWA. We need to add some files and some code and it is done.  
+- manifest.json 
+- start_service_worker.js
+- service_worker.js
+- in the folder /images/ we need a lot of png files with different sizes of the app icon
+- in the index.html header there is "A lot of metadata just for PWA"
+
+When updating the files on the server, we must also update the app version number. It is in 2 places:
+1. service_worker.js - in this constant: const CACHE_NAME = '2020.1206.1112'
+2. Cargo.toml - in this line: version = "2020.1206.1112"
+
+## cargo-make
+
+It is boring to repeat the same commands every time we compile: change version number, build, copy pkg.
+We can automate this with the utilities: cargo-make and the lmake_version_from_date.
+`cargo install cargo-make`
+`cargo install lmake_version_from_date`
+In the file Makefile.toml we write the automation scripts.
+Run  
+`cargo make` - for help
+Run
+`cargo make release` - increment version in Cargo.toml and service_worker.js, build release version, copy pkg to content folder  
+
+

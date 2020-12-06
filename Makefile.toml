@@ -1,0 +1,35 @@
+# rust_wasm_pwa_minimal_clock/Makefile.toml
+# https://github.com/sagiegurari/cargo-make/blob/master/src/lib/Makefile.stable.toml
+
+[config]
+skip_core_tasks = true
+
+[tasks.default]
+description = "help for prepared make tasks"
+clear = true															   
+script= [
+"clear",
+"echo ",
+"echo COMMON COMMANDS FOR TASK AUTOMATION:",
+"echo    $ clear - clear the screen",
+"echo    $ cargo make - list of common commands for task automation",
+"echo    $ cargo make release - increment version in Cargo.toml and service_worker.js, build release version and copy pkg to web content folder",
+"echo be sure to run 'basic-http-server' inside the folder '/web_server_folder/web_content_folder'",
+"echo open or reload your browser on 'http://127.0.0.1:4000/' to run the web app",
+"echo "
+]
+
+[tasks.release]
+description = "cargo build release"
+clear = true
+script = [
+    "clear",
+    "echo $ lmake_version_from_date",
+    "echo $ cargo fmt",
+    "cargo fmt",
+    "echo $ wasm-pack build --target web --release",
+    "wasm-pack build --target web --release",
+    "echo $ \\rsync -a --delete-after pkg/ web_server_folder/web_content_folder/pkg/",
+    "\\rsync -a --delete-after pkg/ web_server_folder/web_content_folder/pkg/",
+    "echo Finished: Now open or reload the web app in your browser 'http://127.0.0.1:4000/'"
+]		

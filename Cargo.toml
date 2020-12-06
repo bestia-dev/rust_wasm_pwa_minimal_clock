@@ -1,0 +1,57 @@
+[package]
+name = "rust_wasm_pwa_minimal_clock"
+version = "2020.1206.1112"
+authors = ["Luciano Bestia <Luciano.Bestia@gmail.com>"]
+edition = "2018"
+description = "tutorial for a minimal example of rust wasm PWA"
+repository = "https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock_game"
+readme = "README.md"
+license = "MIT"
+keywords = ["wasm"]
+categories = ["learning"]
+publish = false
+
+[lib]
+# cdylib is for the wasm module library
+crate-type = ["cdylib"]
+
+[dependencies]
+unwrap = "1.2.1"
+wasm-bindgen = { version = "0.2.62", features = ["serde-serialize"] }
+console_error_panic_hook = "0.1.6"
+js-sys = "0.3.39"
+
+[dependencies.web-sys]
+version = "0.3.39"
+features = [
+  "AbortController",
+  "console",
+  "Document",
+  "Element",
+  "ErrorEvent",
+  "Headers",
+  "HtmlElement",
+  "HtmlHtmlElement",
+  "KeyboardEvent",
+  "Location",
+  "MediaQueryList",
+  "MouseEvent",
+  "Navigator",
+  "Node",
+  "ReferrerPolicy",
+  "Request",
+  "RequestCache",
+  "RequestCredentials",
+  "RequestInit",
+  "RequestMode",
+  "RequestRedirect",
+  "Response",
+  "Screen",
+  "Window",
+]
+
+[dev-dependencies]
+wasm-bindgen-test = "0.3.12"
+
+[profile.release]
+panic = "abort"

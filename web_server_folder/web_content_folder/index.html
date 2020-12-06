@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <!-- classic header for a web page -->
+      <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+      <title>rust_wasm_pwa_minimal_clock</title>
+      <meta name="Description"
+            content="tutorial for a minimal example of rust wasm PWA">
+      <link rel="stylesheet" href="css/rust_wasm_pwa_minimal_clock.css">
+      <meta name="viewport"
+            content="width = device-width,initial-scale = 1.0" />
+      <!-- A lot of metadata just for PWA -->
+      <link rel="manifest" href="manifest.json">
+      <meta name="mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style"
+            content="black-translucent" />
+      <meta name="theme-color" content="#FFFF00">
+      <link rel="apple-touch-icon" sizes="57x57"
+            href="images/apple-icon-57x57.png">
+      <link rel="apple-touch-icon" sizes="60x60"
+            href="images/apple-icon-60x60.png">
+      <link rel="apple-touch-icon" sizes="72x72"
+            href="images/apple-icon-72x72.png">
+      <link rel="apple-touch-icon" sizes="76x76"
+            href="images/apple-icon-76x76.png">
+      <link rel="apple-touch-icon" sizes="114x114"
+            href="images/apple-icon-114x114.png">
+      <link rel="apple-touch-icon" sizes="120x120"
+            href="images/apple-icon-120x120.png">
+      <link rel="apple-touch-icon" sizes="144x144"
+            href="images/apple-icon-144x144.png">
+      <link rel="apple-touch-icon" sizes="152x152"
+            href="images/apple-icon-152x152.png">
+      <link rel="apple-touch-icon" sizes="180x180"
+            href="images/apple-icon-180x180.png">
+      <link rel="apple-touch-icon" href="images/icons-192.png">
+      <link rel="icon" type="image/png" sizes="192x192"
+            href="images/android-icon-192x192.png">
+      <link rel="icon" type="image/png" sizes="32x32"
+            href="images/favicon-32x32.png">
+      <link rel="icon" type="image/png" sizes="96x96"
+            href="images/favicon-96x96.png">
+      <link rel="icon" type="image/png" sizes="16x16"
+            href="images/favicon-16x16.png">
+      <link rel="icon" type="image/png" href="images/icons-512.png"
+            sizes="512x512">
+      <meta name="msapplication-TileColor" content="#FFFF00">
+      <meta name="msapplication-TileImage" content="images/ms-icon-144x144.png">
+
+</head>
+
+<body>
+      <!-- a standard service worker is a must for PWA -->
+      <script src="start_service_worker.js"></script>
+      <!-- warning if javascript iis not enabled -->
+      <noscript>
+            <h2>
+                  !!!???!!!<br>
+                  This web app <br>
+                  cannot work <br>
+                  without javascript<br>
+                  enabled<br>
+                  !!!???!!!</h2>
+      </noscript>
+      <!-- display a text while waiting for wasm download. 
+      This content will change from the wasm code.-->
+      <div id="div_for_wasm_html_injecting">
+            <h2>
+                  Waiting to<br>
+                  download <br>
+                  the web app...<br>
+                  This is <br>
+                  very quick on fast<br>
+                  networks...<br>
+            </h2>
+      </div>
+      <!-- import and init the wasm code -->
+      <script type="module">
+            import init from "./pkg/rust_wasm_pwa_minimal_clock.js";
+            init("./pkg/rust_wasm_pwa_minimal_clock_bg.wasm");
+      </script>
+</body>
+
+</html>
