@@ -4,9 +4,17 @@
 
 [comment]: # (lmake_cargo_toml_to_md start)
 
+***version: 2020.1206.1830  date: 2020-12-06 authors: Luciano Bestia***  
+**tutorial for a minimal example of rust wasm PWA**
+
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-63-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-6-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-4-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 
 [comment]: # (lmake_lines_of_code end)
 
@@ -116,5 +124,23 @@ Run
 `cargo make` - for help
 Run
 `cargo make release` - increment version in Cargo.toml and service_worker.js, build release version, copy pkg to content folder  
+
+## rust code
+
+Finally we come to the sweet spot. We have to write some code in rust. This is a very simple example.  
+The wasm code starts with the function `wasm_bindgen_start()`.  
+We `debug_write()` in the `F12 developer tools` console of the browser the name and version of the PWA, just for debug purposes.  
+Then we `set_interval()` to execute the function `write_time_to_screen()` every 1 second.  
+Wasm is using basically the same engine that javascript uses, so most of the javascript functions like `setInterval` are also accessible in rust via `js_sys` and `web_sys`, just the names are not equal, but similar enough. Great job Rust developers!  
+We use some more of javascript functions: `Date::new_0()`, `get_hours()`,...
+Finally we create a string with the HTML and then inject it into `div_for_wasm_html_injecting` with `set_inner_html()`.  
+Done!
+
+## Conclusion
+
+Writing PWA with Rust is fairly easy. Just do it. Use this tutorial a minimal use case scenario. 
+You can then set any HTML you can imagine. There is no end to the possibilities.  
+You can use many libraries to make it easier to create a virtual DOM like Dodrio.  
+
 
 

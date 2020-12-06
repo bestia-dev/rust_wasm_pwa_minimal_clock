@@ -25,6 +25,11 @@ clear = true
 script = [
     "clear",
     "echo $ lmake_version_from_date",
+    "lmake_version_from_date",
+    "echo $ lmake_lines_of_code",
+    "lmake_lines_of_code",
+    "echo $ lmake_cargo_toml_to_md",
+    "lmake_cargo_toml_to_md",
     "echo $ cargo fmt",
     "cargo fmt",
     "echo $ wasm-pack build --target web --release",

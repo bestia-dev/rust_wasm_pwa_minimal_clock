@@ -78,7 +78,7 @@ dependencies = [
 
 [[package]]
 name = "rust_wasm_pwa_minimal_clock"
-version = "2020.1206.1112"
+version = "2020.1206.1830"
 dependencies = [
  "console_error_panic_hook",
  "js-sys",
