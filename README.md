@@ -140,7 +140,4 @@ Done!
 
 Writing PWA with Rust is fairly easy. Just do it. Use this tutorial a minimal use case scenario. 
 You can then set any HTML you can imagine. There is no end to the possibilities.  
-You can use many libraries to make it easier to create a virtual DOM like Dodrio.  
-
-
-
+There are many libraries to make the work with Rust and wasm easier.  
