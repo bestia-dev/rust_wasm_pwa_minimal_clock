@@ -113,6 +113,8 @@ When updating the files on the server, we must also update the app version numbe
 1. service_worker.js - in this constant: const CACHE_NAME = '2020.1206.1112'
 2. Cargo.toml - in this line: version = "2020.1206.1112"
 
+Now when you open this web app the browser will allow you to `install it` and the user interface will be different from there. 
+
 ## cargo-make
 
 It is boring to repeat the same commands every time we compile: change version number, build, copy pkg.
@@ -138,6 +140,13 @@ Done!
 
 ## Conclusion
 
-Writing PWA with Rust is fairly easy. Just do it. Use this tutorial a minimal use case scenario. 
-You can then set any HTML you can imagine. There is no end to the possibilities.  
+Writing PWA with Rust is fairly easy. Just do it. Use this tutorial as a minimal use case scenario. 
+You can then set in code any HTML you can imagine. There is no end to the possibilities.  
 There are many libraries to make the work with Rust and wasm easier.  
+
+## TODO
+
+I need to change the size of the PWA window to look nice on my TV.  
+Maybe change the icon to something more clocky.  
+
+
