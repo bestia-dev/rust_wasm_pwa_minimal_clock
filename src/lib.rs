@@ -2,6 +2,16 @@ use unwrap::unwrap;
 use wasm_bindgen::prelude::*;
 use web_sys::console;
 
+const VEC_DAY_NAME: [&'static str; 7] = [
+    "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+];
+
 #[wasm_bindgen(start)]
 /// To start the Wasm application, wasm_bindgen runs this functions
 pub fn wasm_bindgen_start() -> Result<(), JsValue> {
@@ -11,7 +21,9 @@ pub fn wasm_bindgen_start() -> Result<(), JsValue> {
         "rust_wasm_pwa_minimal_clock v{}",
         env!("CARGO_PKG_VERSION")
     ));
+    unwrap!(window().resize_to(400, 200));
 
+    write_time_to_screen();
     // every 1s write time to screen
     set_interval(Box::new(write_time_to_screen), 1000);
 
@@ -24,18 +36,19 @@ pub fn write_time_to_screen() {
     use js_sys::*;
     let now = Date::new_0();
     let now_time = format!(
-        "{}:{}:{}",
+        "{:02}:{:02}:{:02}",
         now.get_hours(),
         now.get_minutes(),
-        now.get_seconds()
+        now.get_seconds(),
     );
     let now_date = format!(
-        "{}.{}.{}",
+        "{:02}.{:02}.{:04}  {}",
         now.get_date(),
         now.get_month() + 1,
-        now.get_full_year()
+        now.get_full_year(),
+        VEC_DAY_NAME[now.get_day() as usize],
     );
-    let html = format!("<h2>{}</h2><p>{}</p>", now_time, now_date);
+    let html = format!("<h1>{}</h1><p>{}</p>", now_time, now_date);
 
     let div_for_wasm_html_injecting = get_element_by_id("div_for_wasm_html_injecting");
     div_for_wasm_html_injecting.set_inner_html(&html);
@@ -44,9 +57,8 @@ pub fn write_time_to_screen() {
 /// A high-level wrapper for web_sys::window.set_interval_with_callback_and_timeout_and_arguments_0:
 pub fn set_interval(handler: Box<dyn Fn()>, timeout: i32) {
     let callback = Closure::wrap(handler as Box<dyn Fn()>);
-    let window = web_sys::window().expect("Can't find window");
     use wasm_bindgen::JsCast;
-    window
+    window()
         .set_interval_with_callback_and_timeout_and_arguments_0(
             callback.as_ref().unchecked_ref(),
             timeout,

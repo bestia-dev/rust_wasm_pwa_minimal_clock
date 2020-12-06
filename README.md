@@ -4,13 +4,13 @@
 
 [comment]: # (lmake_cargo_toml_to_md start)
 
-***version: 2020.1206.1830  date: 2020-12-06 authors: Luciano Bestia***  
+***version: 2020.1206.2101  date: 2020-12-06 authors: Luciano Bestia***  
 **tutorial for a minimal example of rust wasm PWA**
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-63-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-75-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-6-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-4-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
@@ -67,36 +67,38 @@ Licence is a thing today and the easiest one is the MIT licence. It basically me
 
 ## HTML, CSS
 
-Let start with a simple static HTML and even simpler CSS files. Just to see if the web server  works. I like to have a separate **web_server_folder** and then **web_content_folder**, because of my previous complex web apps. It is a wise choice.
+Let start with a simple static HTML and even simpler CSS files. Just to see if the web server  works. I like to have a separate **web_server_folder** and then **rust_wasm_pwa_minimal_clock**, because of my previous complex web apps. It is a wise choice.
 \ 
 The code inside my 'index.html' and 'rust_wasm_pwa_minimal_clock.css' will evolve. But nothing too extravagant to not understand. Mainly boring boilerplate copied from somewhere.
 
-## Development
+## web server and wasm/webassembly
 
-We will need a **web file server** because browser security does not allow loading wasm modules from local file. 
+We will need a **web file server** because browser security does not allow loading wasm modules from local files. 
 \
-Install this basic one:
+Install this basic server:
 `cargo install basic-http-server`  
-Run the server in a separate terminal so it can stay running all the time:  
-Go to the web content folder:  
-`cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/web_content_folder`  
+Run the server in a separate terminal so it can stay running all the time.
+It is good to have a separate folder for the web server.
+Go to the web server folder:  
+`cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder`  
 Run the server:  
 `basic-http-server`  
 Open the browser on:  
-`http://127.0.0.1:4000`  
+http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/  
 \
+If the web app is located on the root of the web site it is difficult to develop and debug. It is easier to make a subfolder explicitly for this web app.
 Ok. It should work. Just a static html+css for now.
 
-## Rust wasm
+## Rust wasm/webassembly
 
 Cargo.toml is very important to define the output as wasm library and the required dependencies to web-sys, js-sys and wasm-bindgen.
 We need a src/lib.rs for our code. We start just with a simple wasm_bindgen_start function.
 Compile the code with:  
 `wasm-pack build --target web --release`
 With a little luck we now have a pkg folder with all the goodies.
-We must copy it to our web_content_folder. I like to use the rsync utility.
+We must copy it to our rust_wasm_pwa_minimal_clock. I like to use the rsync utility.
 `sudo apt-get install rsync`  
-`\rsync -a --delete-after pkg/ web_server_folder/web_content_folder/pkg/`  
+`\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/`  
 
 Just refresh the browser and watch the F12 developer tools.
 
@@ -130,13 +132,22 @@ Run
 ## rust code
 
 Finally we come to the sweet spot. We have to write some code in rust. This is a very simple example.  
+If you want to test something small or share some small part of your code you can use the [Rust Playground](https://play.rust-lang.org/) online. It has everything you need: fast, easy and accessible everywhere.  
 The wasm code starts with the function `wasm_bindgen_start()`.  
 We `debug_write()` in the `F12 developer tools` console of the browser the name and version of the PWA, just for debug purposes.  
 Then we `set_interval()` to execute the function `write_time_to_screen()` every 1 second.  
 Wasm is using basically the same engine that javascript uses, so most of the javascript functions like `setInterval` are also accessible in rust via `js_sys` and `web_sys`, just the names are not equal, but similar enough. Great job Rust developers!  
 We use some more of javascript functions: `Date::new_0()`, `get_hours()`,...
 Finally we create a string with the HTML and then inject it into `div_for_wasm_html_injecting` with `set_inner_html()`.  
-Done!
+Build and done!  
+We have now around 50kb of wasm code. Not bad.  
+
+## auto-start on startup
+
+Right click the icon of the installed PWA and choose "Open file location" or "More" and then "Open file location". On the shortcut file `.lnk` right click and choose Properties. In the tab Shortcut copy the Target. It will look something like this:
+`"C:\Program Files (x86)\Microsoft\Edge\Application\msedge_proxy.exe" --profile-directory=Default --app-id=cjjpkgendhneomfdeknejhpcplnagial --app-url=http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/index.html`  
+This is the command you can use to start it from `cmd` or inside the Task Scheduler.  
+To make it auto-start, I like to make an entry in Task Scheduler to start after my login and a couple of seconds of delay.
 
 ## Conclusion
 
@@ -146,7 +157,6 @@ There are many libraries to make the work with Rust and wasm easier.
 
 ## TODO
 
-I need to change the size of the PWA window to look nice on my TV.  
-Maybe change the icon to something more clocky.  
+Maybe change the icon to something more clocky-likey.  
 
 
