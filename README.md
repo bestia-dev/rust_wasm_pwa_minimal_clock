@@ -160,9 +160,9 @@ There are many libraries to make the work with Rust and wasm easier.
 Just for fun let add a voice that reads the clock every full hour.  
 I used the cloud.ibm.com text-to-speech to synthesize the voice. They offer a free service for up to 10000 words in 30 days. Enough for 24 hours. After signing up and choosing the text-to-speech service, I get the api key and the url to call the service. I called it with curl and it returns and saves an ogg file.  
 
+## better icons
 
-## TODO
-
-Maybe change the icon to something more clocky-likey.  
-
+I will never make a really beautiful icon or any graphic design. I am a programmer. But I can put some effort into it to make it a little better.  
+PWA needs a lot of different icon sizes. A lot. Maybe some of them are not needed or some are missing. I don't know because I copied this png files and html code from the internet. Who knows? 
+There are some online services to make all this pngs with different sizes, but not even one is consistent. In the end I finished using paint.net or gimp and resized them manually. 
 
