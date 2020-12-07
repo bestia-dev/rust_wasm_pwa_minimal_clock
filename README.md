@@ -4,15 +4,15 @@
 
 [comment]: # (lmake_cargo_toml_to_md start)
 
-***version: 2020.1206.2101  date: 2020-12-06 authors: Luciano Bestia***  
+***version: 2020.1207.1901  date: 2020-12-07 authors: Luciano Bestia***  
 **tutorial for a minimal example of rust wasm PWA**
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-75-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-6-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-4-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-86-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 
@@ -154,6 +154,12 @@ To make it auto-start, I like to make an entry in Task Scheduler to start after 
 Writing PWA with Rust is fairly easy. Just do it. Use this tutorial as a minimal use case scenario. 
 You can then set in code any HTML you can imagine. There is no end to the possibilities.  
 There are many libraries to make the work with Rust and wasm easier.  
+
+## we need more fun
+
+Just for fun let add a voice that reads the clock every full hour.  
+I used the cloud.ibm.com text-to-speech to synthesize the voice. They offer a free service for up to 10000 words in 30 days. Enough for 24 hours. After signing up and choosing the text-to-speech service, I get the api key and the url to call the service. I called it with curl and it returns and saves an ogg file.  
+
 
 ## TODO
 

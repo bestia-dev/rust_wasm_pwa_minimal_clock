@@ -23,6 +23,7 @@ pub fn wasm_bindgen_start() -> Result<(), JsValue> {
     ));
     unwrap!(window().resize_to(400, 200));
 
+    // first write to screen immediately, then set interval
     write_time_to_screen();
     // every 1s write time to screen
     set_interval(Box::new(write_time_to_screen), 1000);
@@ -35,6 +36,12 @@ pub fn write_time_to_screen() {
     // local time and date
     use js_sys::*;
     let now = Date::new_0();
+
+    // this function is executed once per second
+    if now.get_minutes() == 0 && now.get_seconds() == 0 {
+        speak_the_time(now.get_hours() as i32);
+    }
+
     let now_time = format!(
         "{:02}:{:02}:{:02}",
         now.get_hours(),
@@ -52,6 +59,13 @@ pub fn write_time_to_screen() {
 
     let div_for_wasm_html_injecting = get_element_by_id("div_for_wasm_html_injecting");
     div_for_wasm_html_injecting.set_inner_html(&html);
+}
+
+/// play the voice for the time, prerecorded in ogg
+pub fn speak_the_time(hour: i32) {
+    let src_ogg = format!("sound/{:02}oclock.ogg", hour);
+    let audio_element = unwrap!(web_sys::HtmlAudioElement::new_with_src(&src_ogg));
+    let _x = unwrap!(audio_element.play());
 }
 
 /// A high-level wrapper for web_sys::window.set_interval_with_callback_and_timeout_and_arguments_0:
