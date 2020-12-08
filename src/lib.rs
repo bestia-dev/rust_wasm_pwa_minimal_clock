@@ -17,17 +17,18 @@ const VEC_DAY_NAME: [&'static str; 7] = [
 pub fn wasm_bindgen_start() -> Result<(), JsValue> {
     // Initialize debugging for when/if something goes wrong.
     console_error_panic_hook::set_once();
+    // write the app version just for debug purposes
     debug_write(&format!(
         "rust_wasm_pwa_minimal_clock v{}",
         env!("CARGO_PKG_VERSION")
     ));
-    unwrap!(window().resize_to(400, 200));
-
+    // set the window initial size
+    unwrap!(window().resize_to(350, 240));
     // first write to screen immediately, then set interval
     write_time_to_screen();
     // every 1s write time to screen
     set_interval(Box::new(write_time_to_screen), 1000);
-
+    // return
     Ok(())
 }
 
@@ -42,20 +43,31 @@ pub fn write_time_to_screen() {
         speak_the_time(now.get_hours() as i32);
     }
 
-    let now_time = format!(
-        "{:02}:{:02}:{:02}",
-        now.get_hours(),
-        now.get_minutes(),
-        now.get_seconds(),
-    );
+    let now_time = format!("{:02}:{:02}", now.get_hours(), now.get_minutes(),);
     let now_date = format!(
-        "{:02}.{:02}.{:04}  {}",
+        "{:02}. {:02}. {:04}  {}",
         now.get_date(),
         now.get_month() + 1,
         now.get_full_year(),
         VEC_DAY_NAME[now.get_day() as usize],
     );
-    let html = format!("<h1>{}</h1><p>{}</p>", now_time, now_date);
+    // just for fun show seconds in binary
+    let now_seconds = format!(
+        "seconds: {:02} in binary: {:08b}",
+        now.get_seconds(),
+        now.get_seconds(),
+    );
+    // rust has `Raw string literals` that are great!
+    // just add r# before and # after the start and end double quotes.
+    let html = format!(
+        r#"
+        <h1>{}</h1>
+        <p>{}</p>
+        <p></p>
+        <p class="small">{}</p>
+        "#,
+        now_time, now_date, now_seconds
+    );
 
     let div_for_wasm_html_injecting = get_element_by_id("div_for_wasm_html_injecting");
     div_for_wasm_html_injecting.set_inner_html(&html);

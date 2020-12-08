@@ -1,5 +1,5 @@
 {
-    "short_name": "rust_wasm_pwa_minimal_clock",
+    "short_name": "clock",
     "name": "rust_wasm_pwa_minimal_clock",
     "icons": [
         {
@@ -45,8 +45,8 @@
         }
     ],
     "start_url": "/rust_wasm_pwa_minimal_clock/index.html",
-    "background_color": "#FFFF00",
-    "display": "fullscreen",
+    "background_color": "#000000",
+    "display": "standalone",
     "orientation": "portrait",
-    "theme_color": "#FFFF00"
+    "theme_color": "#000000"
 }

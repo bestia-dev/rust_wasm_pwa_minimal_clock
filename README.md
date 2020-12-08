@@ -4,15 +4,15 @@
 
 [comment]: # (lmake_cargo_toml_to_md start)
 
-***version: 2020.1207.1901  date: 2020-12-07 authors: Luciano Bestia***  
+***version: 2020.1208.1408  date: 2020-12-08 authors: Luciano Bestia***  
 **tutorial for a minimal example of rust wasm PWA**
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-86-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-92-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-6-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-12-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 
@@ -41,6 +41,22 @@ Let's make it look like a native application with some simple boilerplate **PWA 
 I will try to make it **minimal** as possible so to have an easy starting point for learning about the subject.
 \
 It looks like a plan. Let's start.
+
+## name the project
+
+> There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.  
+
+What name to give? It will never be the best name. But it is really difficult to change it later. At least I will make it descriptive. This is a tutorial and not a commercial project. Very often the development name is not the same as the commercial name. To make things easier or harder, depends how you look at it.  
+What is important:  
+- rust programming language
+- wasm compilation target
+- PWA resulting app format
+- minimal code to show that it works
+- showing the clock is the main purpose
+
+So very innovative and imaginative name is: `rust_wasm_pwa_minimal_clock`.  
+I choose it to be in [snake case style](https://medium.com/better-programming/string-case-styles-camel-pascal-snake-and-kebab-case-981407998841), because it is the default name format in rust. And for a good reason. No problems with filenames, case sensitive systems, spaces inside the name and what not.  
+I appreciate names that are easy to `find and replace`, because this is the only function supported by text editors across heterogenous file types. It is bad to have a name that can be a substring of another name. It makes it really hard to `find and replace` across a big project.
 
 ## development environment
 
@@ -96,11 +112,11 @@ We need a src/lib.rs for our code. We start just with a simple wasm_bindgen_star
 Compile the code with:  
 `wasm-pack build --target web --release`
 With a little luck we now have a pkg folder with all the goodies.
-We must copy it to our rust_wasm_pwa_minimal_clock. I like to use the rsync utility.
+We must copy it to our web_server_folder/rust_wasm_pwa_minimal_clock. I like to use the rsync utility.
 `sudo apt-get install rsync`  
 `\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/`  
 
-Just refresh the browser and watch the F12 developer tools.
+Just hard refresh/reload (Ctrl+F5) the browser 2 times and watch the console in F12 developer tools.
 
 ## PWA (progressive web app)
 
@@ -116,6 +132,7 @@ When updating the files on the server, we must also update the app version numbe
 2. Cargo.toml - in this line: version = "2020.1206.1112"
 
 Now when you open this web app the browser will allow you to `install it` and the user interface will be different from there. 
+To update the PWA hit Ctrl+F5 two times. It will update if it needs to.
 
 ## cargo-make
 
@@ -149,12 +166,6 @@ Right click the icon of the installed PWA and choose "Open file location" or "Mo
 This is the command you can use to start it from `cmd` or inside the Task Scheduler.  
 To make it auto-start, I like to make an entry in Task Scheduler to start after my login and a couple of seconds of delay.
 
-## Conclusion
-
-Writing PWA with Rust is fairly easy. Just do it. Use this tutorial as a minimal use case scenario. 
-You can then set in code any HTML you can imagine. There is no end to the possibilities.  
-There are many libraries to make the work with Rust and wasm easier.  
-
 ## we need more fun
 
 Just for fun let add a voice that reads the clock every full hour.  
@@ -164,5 +175,10 @@ I used the cloud.ibm.com text-to-speech to synthesize the voice. They offer a fr
 
 I will never make a really beautiful icon or any graphic design. I am a programmer. But I can put some effort into it to make it a little better.  
 PWA needs a lot of different icon sizes. A lot. Maybe some of them are not needed or some are missing. I don't know because I copied this png files and html code from the internet. Who knows? 
-There are some online services to make all this pngs with different sizes, but not even one is consistent. In the end I finished using paint.net or gimp and resized them manually. 
+There are some online services and CLI to make all this pngs with different sizes, but not even one is consistent. In the end I finished using paint.net or gimp and resized them manually. 
 
+## Conclusion
+
+Writing PWA with Rust is fairly easy. Just do it. Use this tutorial as a minimal use case scenario. 
+You can then set in code any HTML you can imagine. There is no end to the possibilities.  
+There are many libraries to make the work with Rust and wasm even easier.  

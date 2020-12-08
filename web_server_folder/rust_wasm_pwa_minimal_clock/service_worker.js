@@ -6,7 +6,7 @@
 // but the new service worker will not be activated until all 
 //tabs with this webapp are closed.
 
-const CACHE_NAME = '2020.1207.1901';
+const CACHE_NAME = '2020.1208.1408';
 
 self.addEventListener('install', event => {
     console.log('event install ', CACHE_NAME);
@@ -19,7 +19,31 @@ self.addEventListener('install', event => {
                 [
                     'css/rust_wasm_pwa_minimal_clock.css',
                     'pkg/rust_wasm_pwa_minimal_clock_bg.wasm',
-                    'pkg/rust_wasm_pwa_minimal_clock.js'
+                    'pkg/rust_wasm_pwa_minimal_clock.js',
+                    'sound/00oclock.ogg',
+                    'sound/01oclock.ogg',
+                    'sound/02oclock.ogg',
+                    'sound/03oclock.ogg',
+                    'sound/04oclock.ogg',
+                    'sound/05oclock.ogg',
+                    'sound/06oclock.ogg',
+                    'sound/07oclock.ogg',
+                    'sound/08oclock.ogg',
+                    'sound/09oclock.ogg',
+                    'sound/10oclock.ogg',
+                    'sound/11oclock.ogg',
+                    'sound/12oclock.ogg',
+                    'sound/13oclock.ogg',
+                    'sound/14oclock.ogg',
+                    'sound/15oclock.ogg',
+                    'sound/16oclock.ogg',
+                    'sound/17oclock.ogg',
+                    'sound/18oclock.ogg',
+                    'sound/19oclock.ogg',
+                    'sound/20oclock.ogg',
+                    'sound/21oclock.ogg',
+                    'sound/22oclock.ogg',
+                    'sound/23oclock.ogg'
                 ]
             );
         })
