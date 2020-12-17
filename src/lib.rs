@@ -23,7 +23,7 @@ pub fn wasm_bindgen_start() -> Result<(), JsValue> {
         env!("CARGO_PKG_VERSION")
     ));
     // set the window initial size
-    unwrap!(window().resize_to(350, 240));
+    unwrap!(window().resize_to(300, 240));
     // first write to screen immediately, then set interval
     write_time_to_screen();
     // every 1s write time to screen
@@ -45,12 +45,12 @@ pub fn write_time_to_screen() {
 
     let now_time = format!("{:02}:{:02}", now.get_hours(), now.get_minutes(),);
     let now_date = format!(
-        "{:02}. {:02}. {:04}  {}",
+        "{:02}. {:02}. {:04}",
         now.get_date(),
         now.get_month() + 1,
         now.get_full_year(),
-        VEC_DAY_NAME[now.get_day() as usize],
     );
+    let now_day = format!("{}", VEC_DAY_NAME[now.get_day() as usize],);
     // just for fun show seconds in binary
     let now_seconds = format!(
         "seconds: {:02} in binary: {:08b}",
@@ -63,10 +63,10 @@ pub fn write_time_to_screen() {
         r#"
         <h1>{}</h1>
         <p>{}</p>
-        <p></p>
+        <p>{}</p>
         <p class="small">{}</p>
         "#,
-        now_time, now_date, now_seconds
+        now_time, now_day, now_date, now_seconds
     );
 
     let div_for_wasm_html_injecting = get_element_by_id("div_for_wasm_html_injecting");
@@ -75,8 +75,13 @@ pub fn write_time_to_screen() {
 
 /// play the voice for the time, prerecorded in ogg
 pub fn speak_the_time(hour: i32) {
+    // prepare the file name of the ogg sound file
     let src_ogg = format!("sound/{:02}oclock.ogg", hour);
+    // prepare the audio element, just like in javascript
     let audio_element = unwrap!(web_sys::HtmlAudioElement::new_with_src(&src_ogg));
+    // let's play. I don't expect an error to occur, so I use unwrap! here.
+    // If an error would occur, the whole app will be aborted with an error message.
+    // Error will not occur.
     let _x = unwrap!(audio_element.play());
 }
 

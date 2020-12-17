@@ -4,15 +4,15 @@
 
 [comment]: # (lmake_cargo_toml_to_md start)
 
-***version: 2020.1208.1408  date: 2020-12-08 authors: Luciano Bestia***  
-**tutorial for a minimal example of rust wasm PWA**
+**tutorial for a minimal example of rust wasm PWA**  
+***[repo](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock_game); version: 2020.1217.1639  date: 2020-12-17 authors: Luciano Bestia***  
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-92-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-12-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-17-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
 
@@ -42,7 +42,7 @@ I will try to make it **minimal** as possible so to have an easy starting point 
 \
 It looks like a plan. Let's start.
 
-## name the project
+## naming the project
 
 > There are two hard things in computer science: cache invalidation, naming things, and off-by-one errors.  
 
@@ -95,10 +95,8 @@ Install this basic server:
 `cargo install basic-http-server`  
 Run the server in a separate terminal so it can stay running all the time.
 It is good to have a separate folder for the web server.
-Go to the web server folder:  
-`cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder`  
-Run the server:  
-`basic-http-server`  
+Go to the web server folder and run the server:  
+`cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder; basic-http-server`  
 Open the browser on:  
 http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/  
 \
@@ -170,12 +168,14 @@ To make it auto-start, I like to make an entry in Task Scheduler to start after 
 
 Just for fun let add a voice that reads the clock every full hour.  
 I used the cloud.ibm.com text-to-speech to synthesize the voice. They offer a free service for up to 10000 words in 30 days. Enough for 24 hours. After signing up and choosing the text-to-speech service, I get the api key and the url to call the service. I called it with curl and it returns and saves an ogg file.  
+Let's put on the screen the seconds in binary, just for fun. To show we are programmers :-)  
 
 ## better icons
 
 I will never make a really beautiful icon or any graphic design. I am a programmer. But I can put some effort into it to make it a little better.  
 PWA needs a lot of different icon sizes. A lot. Maybe some of them are not needed or some are missing. I don't know because I copied this png files and html code from the internet. Who knows? 
-There are some online services and CLI to make all this pngs with different sizes, but not even one is consistent. In the end I finished using paint.net or gimp and resized them manually. 
+There are some online services and CLI to make all this pngs with different sizes, but not even one is consistent. In the end I finished using paint.net or gimp and resized them manually.  
+Idea for the next project: make a CLI and web-service that makes all this icons, html and manifest boilerplate.
 
 ## Conclusion
 

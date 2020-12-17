@@ -10,12 +10,12 @@ clear = true
 script= [
 "clear",
 "echo ",
-"echo COMMON COMMANDS FOR TASK AUTOMATION:",
+"echo COMMANDS FOR TASK AUTOMATION:",
 "echo    $ clear - clear the screen",
 "echo    $ cargo make - list of common commands for task automation",
 "echo    $ cargo make release - increment version in Cargo.toml and service_worker.js, build release version and copy pkg to web content folder",
-"echo be sure to run 'basic-http-server' inside the folder '/web_server_folder'",
-"echo open or reload your browser on 'http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/' to run the web app",
+"echo Run the web server in a separate terminal: 'cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/;basic-http-server'",
+"echo Run the web app in your browser: 'http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/'",
 "echo    $ cargo make publish_to_web - automation for publish",
 "echo "
 ]
@@ -37,7 +37,8 @@ script = [
     "wasm-pack build --target web --release",
     "echo $ \\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/",
     "\\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/",
-    "echo Finished: Now open or reload the web app in your browser 'http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/'"
+    "echo Finished: Run the web server in a separate terminal: 'cd ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/;basic-http-server'",
+    "echo Finished: Run the web app in your browser: 'http://127.0.0.1:4000/rust_wasm_pwa_minimal_clock/'",
 ]		
 
 [tasks.publish_to_web]

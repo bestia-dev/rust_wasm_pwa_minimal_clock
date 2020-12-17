@@ -1,6 +1,6 @@
 [package]
 name = "rust_wasm_pwa_minimal_clock"
-version = "2020.1208.1408"
+version = "2020.1217.1639"
 authors = ["Luciano Bestia <Luciano.Bestia@gmail.com>"]
 edition = "2018"
 description = "tutorial for a minimal example of rust wasm PWA"
