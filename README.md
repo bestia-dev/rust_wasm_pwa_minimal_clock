@@ -23,7 +23,7 @@
 ## Try it
 
 <https://bestia.dev/rust_wasm_pwa_minimal_clock/>
-
+![screenshot](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/blob/main/images/minimal_clock.jpg?raw=true)
 ## what to do?
 
 First I need to decide what to do. It will be primarily a tutorial. But it will be also a useful piece of software. This makes it more interesting, motivating and fun.
