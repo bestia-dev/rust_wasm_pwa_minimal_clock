@@ -22,7 +22,7 @@
 
 ## Try it
 
-<https://bestia.dev/rust_wasm_pwa_minimal_clock/>
+<https://bestia.dev/rust_wasm_pwa_minimal_clock/>  
 ![screenshot](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/blob/main/images/minimal_clock.jpg?raw=true)
 ## what to do?
 
