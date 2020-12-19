@@ -5,7 +5,7 @@
 [comment]: # (lmake_cargo_toml_to_md start)
 
 **tutorial for a minimal example of rust wasm PWA**  
-***[repo](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock_game); version: 2020.1217.1639  date: 2020-12-17 authors: Luciano Bestia***  
+***[repo](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock_game); version: 2020.1217.1639  date: 2020-12-19 authors: Luciano Bestia***  
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
@@ -122,7 +122,7 @@ It is easy to make a simple PWA. We need to add some files and some code and it 
 - manifest.json 
 - start_service_worker.js
 - service_worker.js
-- in the folder /images/ we need a lot of png files with different sizes of the app icon
+- in the folder /icons/ we need a lot of png files with different sizes of the app icon
 - in the index.html header there is "A lot of metadata just for PWA"
 
 When updating the files on the server, we must also update the app version number. It is in 2 places:
