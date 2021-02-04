@@ -1,10 +1,10 @@
 [package]
 name = "rust_wasm_pwa_minimal_clock"
-version = "2020.1217.1639"
+version = "2021.204.1558"
 authors = ["Luciano Bestia <Luciano.Bestia@gmail.com>"]
 edition = "2018"
 description = "tutorial for a minimal example of rust wasm PWA"
-repository = "https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock_game"
+repository = "https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock"
 readme = "README.md"
 license = "MIT"
 keywords = ["wasm"]

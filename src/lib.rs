@@ -38,11 +38,6 @@ pub fn write_time_to_screen() {
     use js_sys::*;
     let now = Date::new_0();
 
-    // this function is executed once per second
-    if now.get_minutes() == 0 && now.get_seconds() == 0 {
-        speak_the_time(now.get_hours() as i32);
-    }
-
     let now_time = format!("{:02}:{:02}", now.get_hours(), now.get_minutes(),);
     let now_date = format!(
         "{:02}. {:02}. {:04}",
@@ -70,6 +65,19 @@ pub fn write_time_to_screen() {
     );
 
     let div_for_wasm_html_injecting = get_element_by_id("div_for_wasm_html_injecting");
+    // this function is executed once per second
+    // I will use a DOM element attribute as a global variable
+    let last_sound = div_for_wasm_html_injecting
+        .get_attribute("data-last_sound")
+        .unwrap();
+    if last_sound != now_time {
+        if now.get_minutes() == 0 {
+            div_for_wasm_html_injecting
+                .set_attribute("data-last_sound", &now_time)
+                .unwrap();
+            speak_the_time(now.get_hours() as i32);
+        }
+    }
     div_for_wasm_html_injecting.set_inner_html(&html);
 }
 
