@@ -5,25 +5,25 @@
 [comment]: # (lmake_cargo_toml_to_md start)
 
 **tutorial for a minimal example of rust wasm PWA**  
-***version: 2021.204.1558  date: 2021-02-04 author: [Dev_Bestia](https://bestia.dev) repository: [GitHub](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock)***  
+***version: 2021.204.1558  date: 2021-02-04 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock)***  
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
 [comment]: # (lmake_lines_of_code start)
-[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-18-purple.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
-[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
+[![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
+[![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-18-purple.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
+[![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
+[![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 
 [comment]: # (lmake_lines_of_code end)
 
-[![Licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/blob/master/LICENSE) [![Rust](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/workflows/RustAction/badge.svg)](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/)
+[![Licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/master/LICENSE) [![Rust](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 
 ## Try it
 
 <https://bestia.dev/rust_wasm_pwa_minimal_clock/>  
-![screenshot](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock/blob/main/images/minimal_clock.jpg?raw=true)
+![screenshot](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/main/images/minimal_clock.jpg?raw=true)
 
 ## what to do?
 
@@ -77,7 +77,7 @@ The rust toolchain installation is very easy for Debian on WSL, just follow the 
 \
 For wasm compilation we need the tool [wasm-pack](https://rustwasm.github.io/wasm-pack/installer/).
 \
-You probably found this file you read just now on [Github](https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock).**Github** (Microsoft) is for now the place for my repositories.
+You probably found this file you read just now on [Github](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock).**Github** (Microsoft) is for now the place for my repositories.
 \
 And **Git** on Debian is logically the version control system for my source code.
 \

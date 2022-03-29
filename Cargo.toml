@@ -1,10 +1,10 @@
 [package]
 name = "rust_wasm_pwa_minimal_clock"
 version = "2022.314.1836"
-authors = ["Luciano Bestia <Luciano.Bestia@gmail.com>"]
+authors = ["bestia.dev <info@bestia.dev>"]
 edition = "2018"
 description = "tutorial for a minimal example of rust wasm PWA"
-repository = "https://github.com/LucianoBestia/rust_wasm_pwa_minimal_clock"
+repository = "https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock"
 readme = "README.md"
 license = "MIT"
 keywords = ["wasm"]
