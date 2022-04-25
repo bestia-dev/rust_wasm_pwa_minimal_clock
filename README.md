@@ -113,7 +113,7 @@ Compile the code with:
 `wasm-pack build --target web --release`
 With a little luck we now have a pkg folder with all the goodies.
 We must copy it to our web_server_folder/rust_wasm_pwa_minimal_clock. I like to use the rsync utility.
-`sudo apt-get install rsync`  
+`sudo apt install rsync`  
 `\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/`  
 
 Just hard refresh/reload (Ctrl+F5) the browser 2 times and watch the console in F12 developer tools.
