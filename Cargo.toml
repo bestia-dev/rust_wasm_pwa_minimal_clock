@@ -2,6 +2,7 @@
 name = "rust_wasm_pwa_minimal_clock"
 version = "2022.314.1836"
 authors = ["bestia.dev"]
+homepage = "https://bestia.dev"
 edition = "2018"
 description = "tutorial for a minimal example of rust wasm PWA"
 repository = "https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock"
