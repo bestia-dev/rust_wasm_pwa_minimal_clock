@@ -18,9 +18,11 @@
 
 [comment]: # (lmake_lines_of_code end)
 
-[![Licence](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/master/LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/master/LICENSE)
 [![Rust](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fbestia-dev%2Frust_wasm_pwa_minimal_clock&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)](https://hits.seeyoufarm.com)
+
+Hashtags: #rustlang #tutorial #pwa #wasm #webassembly
 
 ## Try it
 
