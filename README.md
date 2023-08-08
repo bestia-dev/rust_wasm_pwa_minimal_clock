@@ -9,6 +9,9 @@
 
 [comment]: # (lmake_cargo_toml_to_md end)
 
+![status](https://img.shields.io/badge/maintained-green) 
+![status](https://img.shields.io/badge/ready_for_use-green) 
+
 [comment]: # (lmake_lines_of_code start)
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
