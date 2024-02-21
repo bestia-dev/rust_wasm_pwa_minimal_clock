@@ -1,29 +1,29 @@
-[comment]: # (lmake_md_to_doc_comments segment start A)
+[//]: # (auto_md_to_doc_comments segment start A)
 
 # rust_wasm_pwa_minimal_clock
 
-[comment]: # (lmake_cargo_toml_to_md start)
+[//]: # (auto_cargo_toml_to_md start)
 
 **tutorial for a minimal example of rust wasm PWA**  
 ***version: 2021.204.1558  date: 2021-02-04 author: [bestia.dev](https://bestia.dev) repository: [GitHub](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock)***  
 
-[comment]: # (lmake_cargo_toml_to_md end)
+[//]: # (auto_cargo_toml_to_md end)
 
-![status](https://img.shields.io/badge/maintained-green) 
-![status](https://img.shields.io/badge/ready_for_use-green) 
+ ![maintained](https://img.shields.io/badge/maintained-green)
+ ![ready_for_use](https://img.shields.io/badge/ready_for_use-green)
 
-[comment]: # (lmake_lines_of_code start)
+[//]: # (auto_lines_of_code start)
 [![Lines in Rust code](https://img.shields.io/badge/Lines_in_Rust-99-green.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Lines in Doc comments](https://img.shields.io/badge/Lines_in_Doc_comments-7-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Lines in Comments](https://img.shields.io/badge/Lines_in_comments-18-purple.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Lines in examples](https://img.shields.io/badge/Lines_in_examples-0-yellow.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 [![Lines in tests](https://img.shields.io/badge/Lines_in_tests-0-orange.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
 
-[comment]: # (lmake_lines_of_code end)
+[//]: # (auto_lines_of_code end)
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/master/LICENSE)
-[![Rust](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
-![Hits](https://bestia.dev/webpage_hit_counter/get_svg_image/638168303.svg)
+ [![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/blob/master/LICENSE)
+ [![Rust](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/workflows/RustAction/badge.svg)](https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock/)
+ ![rust_wasm_pwa_minimal_clock](https://bestia.dev/webpage_hit_counter/get_svg_image/638168303.svg)
 
 Hashtags: #rustlang #tutorial #pwa #wasm #webassembly  
 My projects on Github are more like a tutorial than a finished product: [bestia-dev tutorials](https://github.com/bestia-dev/tutorials_rust_wasm).
@@ -147,9 +147,9 @@ To update the PWA hit Ctrl+F5 two times. It will update if it needs to.
 ## cargo-make
 
 It is boring to repeat the same commands every time we compile: change version number, build, copy pkg.
-We can automate this with the utilities: cargo-make and the lmake_version_from_date.
+We can automate this with the utilities: cargo-make and the auto_version_from_date.
 `cargo install cargo-make`
-`cargo install lmake_version_from_date`
+`cargo install auto_version_from_date`
 In the file Makefile.toml we write the automation scripts.
 Run  
 `cargo make` - for help
