@@ -1,5 +1,3 @@
-[//]: # (auto_md_to_doc_comments segment start A)
-
 # rust_wasm_pwa_minimal_clock
 
 [//]: # (auto_cargo_toml_to_md start)
