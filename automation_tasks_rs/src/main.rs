@@ -1,10 +1,19 @@
-//! automation_tasks_rs for rust_wasm_pwa_minimal_clock
+// automation_tasks_rs for rust_wasm_pwa_minimal_clock
 
-use cargo_auto_lib::*;
+// region: library with basic automation tasks
+use cargo_auto_lib as cl;
+// traits must be in scope (Rust strangeness)
+use cl::CargoTomlPublicApiMethods;
 
-/// automation_tasks_rs for rust_wasm_pwa_minimal_clock
+use cargo_auto_lib::GREEN;
+use cargo_auto_lib::RED;
+use cargo_auto_lib::RESET;
+use cargo_auto_lib::YELLOW;
+
+// region: library with basic automation tasks
+
 fn main() {
-    exit_if_not_run_in_rust_project_root_directory();
+    cl::exit_if_not_run_in_rust_project_root_directory();
 
     // get CLI arguments
     let mut args = std::env::args();
@@ -13,7 +22,7 @@ fn main() {
     match_arguments_and_call_tasks(args);
 }
 
-// region: match, help and completion. Take care to keep them in sync with the changes.
+// region: match, help and completion
 
 /// match arguments and call tasks functions
 fn match_arguments_and_call_tasks(mut args: std::env::Args) {
@@ -25,7 +34,7 @@ fn match_arguments_and_call_tasks(mut args: std::env::Args) {
             if &task == "completion" {
                 completion();
             } else {
-                println!("Running automation task: {}", &task);
+                println!("{YELLOW}Running automation task: {task}{RESET}");
                 if &task == "build" {
                     task_build();
                 } else if &task == "build_and_run" {
@@ -79,12 +88,12 @@ fn completion() {
 // region: tasks
 
 fn task_build() {
-    auto_version_increment_semver_or_date();
-    run_shell_command("cargo fmt");    
-    auto_cargo_toml_to_md();
-    auto_lines_of_code("");
-    run_shell_command("wasm-pack build --target web");
-    run_shell_command("\\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/");
+    cl::auto_version_increment_semver_or_date();
+    cl::run_shell_command("cargo fmt");    
+    cl::auto_cargo_toml_to_md();
+    cl::auto_lines_of_code("");
+    cl::run_shell_command("wasm-pack build --target web");
+    cl::run_shell_command("\\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/");
     println!(
         r#"
 After `cargo auto build` 
@@ -99,12 +108,12 @@ Later run `cargo auto commit_and_push "msg"`
 
 
 fn task_build_and_run() {
-    auto_version_increment_semver_or_date();
-    run_shell_command("cargo fmt");    
-    auto_cargo_toml_to_md();
-    auto_lines_of_code("");
-    run_shell_command("wasm-pack build --target web");
-    run_shell_command("\\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/");
+    cl::auto_version_increment_semver_or_date();
+    cl::run_shell_command("cargo fmt");    
+    cl::auto_cargo_toml_to_md();
+    cl::auto_lines_of_code("");
+    cl::run_shell_command("wasm-pack build --target web");
+    cl::run_shell_command("\\rsync -a --delete-after pkg/ web_server_folder/rust_wasm_pwa_minimal_clock/pkg/");
     println!(
         r#"
 After `cargo auto build_and_run` 
@@ -113,25 +122,36 @@ Finally close the browser and stop the server with `Ctrl+c` in the VSode termina
 Later run `cargo auto commit_and_push "msg"`
 "#
     );
-    run_shell_command("run `basic-http-server -a 0.0.0.0:4000 ./web_server_folder`");
+    cl::run_shell_command("run `basic-http-server -a 0.0.0.0:4000 ./web_server_folder`");
 }
 
 /// commit and push
 fn task_commit_and_push(arg_2: Option<String>) {
-    match arg_2 {
-        None => println!("Error: message for commit is mandatory"),
-        Some(message) => {
-            run_shell_command(&format!(r#"git add -A && git commit -m "{}""#, message));
-            run_shell_command("git push");
-            println!(
-                r#"
-After `cargo auto commit and push`
-manually deploy to the web server.
-"#
-            );
+    let Some(message) = arg_2 else {
+        eprintln!("{RED}Error: Message for commit is mandatory. Exiting.{RESET}");
+        // early exit
+        return;
+    };
+
+    // init repository if needed. If it is not init then normal commit and push.
+    if !cl::init_repository_if_needed(&message) {
+        // separate commit for docs if they changed, to not make a lot of noise in the real commit
+        if std::path::Path::new("docs").exists() {
+            cl::run_shell_command(r#"git add docs && git diff --staged --quiet || git commit -m "update docs" "#);
         }
+        cl::add_message_to_unreleased(&message);
+        // the real commit of code
+        cl::run_shell_command(&format!( r#"git add -A && git diff --staged --quiet || git commit -m "{message}" "#));
+        cl::run_shell_command("git push");
+        println!(
+r#"
+    {YELLOW}After `cargo auto commit_and_push "message"`{RESET}
+{GREEN}cargo auto publish_to_crates_io{RESET}
+"#
+        );
     }
 }
+
 //TODO: publish to web
 /*
 script = [
