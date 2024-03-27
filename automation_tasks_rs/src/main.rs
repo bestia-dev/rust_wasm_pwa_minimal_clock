@@ -155,12 +155,12 @@ r#"
 //TODO: publish to web
 /*
 script = [
-    "echo ",
-    "echo $ git tag -f -a v${CARGO_MAKE_CRATE_VERSION} -m version_${CARGO_MAKE_CRATE_VERSION}",
+    "printf ",
+    "printf $ git tag -f -a v${CARGO_MAKE_CRATE_VERSION} -m version_${CARGO_MAKE_CRATE_VERSION}",
     "git tag -f -a v${CARGO_MAKE_CRATE_VERSION} -m version_${CARGO_MAKE_CRATE_VERSION}",
-    "echo $ rsync -a --info=progress2 --delete-after ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/rust_wasm_pwa_minimal_clock/ ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
+    "printf $ rsync -a --info=progress2 --delete-after ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/rust_wasm_pwa_minimal_clock/ ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
     "rsync -a --info=progress2 --delete-after ~/rustprojects/rust_wasm_pwa_minimal_clock/web_server_folder/rust_wasm_pwa_minimal_clock/ ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
-    "echo $ rsync -e ssh -a --info=progress2 --delete-after ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/ luciano_bestia@bestia.dev:/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
+    "printf $ rsync -e ssh -a --info=progress2 --delete-after ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/ luciano_bestia@bestia.dev:/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
     "rsync -e ssh -a --info=progress2 --delete-after ~/rustprojects/googlecloud/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/ luciano_bestia@bestia.dev:/var/www/bestia.dev/rust_wasm_pwa_minimal_clock/",
 ]
 */
