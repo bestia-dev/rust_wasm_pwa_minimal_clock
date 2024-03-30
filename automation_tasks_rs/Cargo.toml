@@ -8,4 +8,4 @@ description = "Automation tasks coded in Rust language for the workflow of Rust 
 publish = false
 
 [dependencies]
-cargo_auto_lib = "2.0.6"
+cargo_auto_lib = "2.0.8"
