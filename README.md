@@ -144,17 +144,13 @@ When updating the files on the server, we must also update the app version numbe
 Now when you open this web app the browser will allow you to `install it` and the user interface will be different from there.
 To update the PWA hit Ctrl+F5 two times. It will update if it needs to.
 
-## cargo-make
+## cargo-auto
 
 It is boring to repeat the same commands every time we compile: change version number, build, copy pkg.
-We can automate this with the utilities: cargo-make and the auto_version_from_date.
-`cargo install cargo-make`
-`cargo install auto_version_from_date`
-In the file Makefile.toml we write the automation scripts.
-Run  
-`cargo make` - for help
-Run
-`cargo make release` - increment version in Cargo.toml and service_worker.js, build release version, copy pkg to content folder  
+We can automate this with the utilities: cargo-auto.
+`cargo auto build`
+`cargo auto release`
+...
 
 ## rust code
 
