@@ -1,11 +1,10 @@
 name: rust_fmt_auto_build_test
 
 on:
-  # push to any branch
   push:
-
-  # any pull requests
+    branches: [ main ]
   pull_request:
+    branches: [ main ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -23,27 +22,28 @@ jobs:
       run: cargo fmt -- --check
 
     - name: Run cache for rust dependencies
-      uses: Swatinem/rust-cache@v2.7.3
+      uses: Swatinem/rust-cache@v2.7.7
 
     - name: Configure sccache
       run: printf "RUSTC_WRAPPER=sccache\n" >> $GITHUB_ENV; printf "SCCACHE_GHA_ENABLED=true\n" >> $GITHUB_ENV
 
     - name: Run sccache-cache for artifacts
-      uses: mozilla-actions/sccache-action@v0.0.4
+      uses: mozilla-actions/sccache-action@v0.0.8
+      
+    - name: cargo clippy --no-deps
+      run: cargo clippy --no-deps
 
     - name: install and cache cargo-auto
-      uses: baptiste0928/cargo-install@v3.0.0
+      uses: baptiste0928/cargo-install@v3.3.0
       with:
         crate: cargo-auto
 
     - name: Cache for automation tasks
-      uses: actions/cache@v4.0.0
+      uses: actions/cache@v4.2.2
       with:
         path: |
           automation_tasks_rs/.file_hashes.json 
           automation_tasks_rs/target 
-          automation_tasks_rs/Cargo.toml
-          automation_tasks_rs/Cargo.lock
         key: automation_tasks_rs
 
     - name: cargo auto build
@@ -51,4 +51,3 @@ jobs:
 
     - name: cargo auto test
       run: cargo auto test
-      
