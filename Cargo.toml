@@ -8,6 +8,7 @@ description = "tutorial for a minimal example of rust wasm PWA"
 repository = "https://github.com/bestia-dev/rust_wasm_pwa_minimal_clock"
 readme = "README.md"
 license = "MIT"
+# Keyword must be only one word: lowercase letters, hyphens(-) or numbers, less then 35 characters, at most 5 keywords per crate
 keywords = ["wasm"]
 categories = ["learning"]
 publish = false
